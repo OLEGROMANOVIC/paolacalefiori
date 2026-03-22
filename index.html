@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paola Calefiori — Official</title>
+  <meta name="description" content="Paola Calefiori — AI Model. Exclusive photos & videos."/>
+
+  <!-- ExoClick: замените REPLACE_ZONE_ID_* на Zone ID из exoclick.com → Sites & Zones -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg:       #080810;
+      --bg2:      #0d0d1a;
+      --pink:     #ff2d78;
+      --pink2:    #ff6ba8;
+      --purple:   #9b4dff;
+      --white:    #f0eefa;
+      --gray:     #7a7a9a;
+      --gray2:    #b0aec8;
+      --card-bg:  rgba(255,255,255,0.04);
+      --border:   rgba(255,255,255,0.08);
+      --glow:     0 0 40px rgba(255,45,120,0.25);
+      --font-h:   'Playfair Display', serif;
+      --font-b:   'Inter', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-b);
+      font-size: 14px;
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--pink); border-radius: 2px; }
+
+    /* ══════════════════════════════════════════
+       AD OVERLAYS
+    ══════════════════════════════════════════ */
+    #periodic-overlay, #video-ad-overlay {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(5,5,15,0.96);
+      backdrop-filter: blur(12px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 20px;
+    }
+    #periodic-overlay, #video-ad-overlay { display: none; }
+
+    .ad-label {
+      font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gray); font-family: var(--font-b);
+    }
+    .ad-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      padding: 8px;
+      display: flex; align-items: center; justify-content: center;
+      min-width: 320px; min-height: 90px;
+    }
+    .close-btn, .skip-btn {
+      padding: 10px 36px;
+      background: transparent;
+      border: 1px solid var(--pink);
+      color: var(--pink);
+      font-family: var(--font-b);
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .close-btn:hover, .skip-btn:hover { background: var(--pink); color: #fff; }
+    .close-btn:disabled, .skip-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .countdown { font-size: 11px; color: var(--gray); letter-spacing: 0.2em; }
+
+    /* ══════════════════════════════════════════
+       AI BADGE
+    ══════════════════════════════════════════ */
+    .ai-banner {
+      background: rgba(155,77,255,0.1);
+      border-bottom: 1px solid rgba(155,77,255,0.2);
+      padding: 8px 24px; text-align: center;
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(155,77,255,0.8); position: relative; z-index: 99;
+    }
+    .ai-banner strong { color: var(--purple); }
+    .ai-badge-fixed {
+      position: fixed; bottom: 20px; right: 20px; z-index: 300;
+      background: rgba(155,77,255,0.15); border: 1px solid rgba(155,77,255,0.3);
+      padding: 5px 12px; font-size: 9px; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--purple); pointer-events: none;
+      border-radius: 20px;
+    }
+
+    /* ══════════════════════════════════════════
+       MOBILE NAV
+    ══════════════════════════════════════════ */
+    .mobile-nav {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: var(--bg); flex-direction: column;
+      align-items: center; justify-content: center; gap: 36px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--font-h); font-size: 32px; font-weight: 400;
+      color: var(--white); text-decoration: none; transition: color 0.3s;
+    }
+    .mobile-nav a:hover { color: var(--pink); }
+    .mobile-nav .close-nav {
+      position: absolute; top: 24px; right: 24px;
+      font-size: 28px; color: var(--gray); background: none; border: none; cursor: pointer;
+    }
+
+    /* ══════════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════════ */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: linear-gradient(to bottom, rgba(8,8,16,0.98), transparent);
+      transition: background 0.4s;
+    }
+    header.scrolled { background: rgba(8,8,16,0.98); border-bottom: 1px solid var(--border); }
+
+    .logo {
+      font-family: var(--font-h); font-size: 22px; font-style: italic;
+      font-weight: 700; letter-spacing: 0.02em;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gray2); text-decoration: none;
+      transition: color 0.3s; position: relative;
+    }
+    nav a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 100%;
+      height: 1px; background: var(--pink); transition: right 0.3s;
+    }
+    nav a:hover { color: var(--white); }
+    nav a:hover::after { right: 0; }
+
+    #lang-select {
+      background: transparent; border: 1px solid var(--border);
+      color: var(--gray); font-family: var(--font-b); font-size: 10px;
+      letter-spacing: 0.15em; padding: 5px 10px; cursor: pointer; outline: none;
+      border-radius: 4px; transition: border-color 0.3s;
+    }
+    #lang-select:hover { border-color: var(--pink); color: var(--pink); }
+    #lang-select option { background: #111; color: #fff; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s; }
+
+    @media (max-width: 768px) {
+      header { padding: 14px 20px; }
+      nav { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    #hero {
+      min-height: 100vh; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      overflow: hidden;
+    }
+    .hero-bg img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      #hero { min-height: 100svh; }
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(8,8,16,0.85) 0%,
+        rgba(8,8,16,0.4) 50%,
+        rgba(8,8,16,0.9) 100%
+      );
+    }
+    /* Glow orbs */
+    .orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
+    }
+    .orb-1 {
+      width: 400px; height: 400px;
+      background: rgba(255,45,120,0.15);
+      top: 10%; left: -10%;
+      animation: float1 8s ease-in-out infinite;
+    }
+    .orb-2 {
+      width: 300px; height: 300px;
+      background: rgba(155,77,255,0.12);
+      bottom: 10%; right: -5%;
+      animation: float2 10s ease-in-out infinite;
+    }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,20px)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,30px)} }
+
+    .hero-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 120px 24px 80px; max-width: 700px;
+    }
+
+    .hero-name {
+      font-family: var(--font-h);
+      font-size: clamp(52px, 10vw, 110px);
+      font-weight: 700; line-height: 0.95;
+      margin-bottom: 8px;
+    }
+    .hero-name .first { display: block; color: var(--white); }
+    .hero-name .last {
+      display: block; font-style: italic;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gray); margin: 20px 0 40px;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 14px 40px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      border: none; color: #fff; font-family: var(--font-b);
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none;
+      border-radius: 2px;
+      box-shadow: 0 0 30px rgba(255,45,120,0.35);
+      transition: all 0.3s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(255,45,120,0.5); }
+    .btn-outline {
+      padding: 14px 40px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2); color: var(--white);
+      font-family: var(--font-b); font-size: 11px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; text-decoration: none; border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover { border-color: var(--pink); color: var(--pink); }
+
+    /* Stats bar */
+    .hero-stats {
+      position: absolute; bottom: 0; left: 0; right: 0; z-index: 2;
+      display: flex; justify-content: center; gap: 0;
+      border-top: 1px solid var(--border);
+      background: rgba(8,8,16,0.7); backdrop-filter: blur(10px);
+    }
+    .stat-item {
+      flex: 1; max-width: 180px; padding: 20px 24px; text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-h); font-size: 28px; font-style: italic;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-lbl { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gray); margin-top: 4px; }
+
+    @media (max-width: 600px) { .hero-stats { display: none; } }
+
+    /* ══════════════════════════════════════════
+       SECTION COMMONS
+    ══════════════════════════════════════════ */
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .section-tag {
+      display: inline-block; margin-bottom: 12px;
+      font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--pink); padding: 4px 16px;
+      border: 1px solid rgba(255,45,120,0.3); border-radius: 12px;
+    }
+    .section-title {
+      font-family: var(--font-h); font-size: clamp(28px, 5vw, 52px);
+      font-weight: 700; line-height: 1.1;
+    }
+    .section-title em { font-style: italic; color: var(--pink); }
+    .section-line {
+      width: 50px; height: 2px; margin: 16px auto 0;
+      background: linear-gradient(to right, var(--pink), var(--purple));
+      border-radius: 1px;
+    }
+
+    /* ══════════════════════════════════════════
+       GALLERY
+    ══════════════════════════════════════════ */
+    #gallery { padding: 100px 0; background: var(--bg); }
+    .gallery-wrap { padding: 0 32px; }
+
+    /* Masonry-style grid */
+    .gallery-grid {
+      columns: 3; column-gap: 12px;
+    }
+    .gallery-item {
+      break-inside: avoid; margin-bottom: 12px;
+      position: relative; overflow: hidden; cursor: pointer;
+      border-radius: 4px;
+    }
+    .gallery-item img {
+      width: 100%; display: block;
+      transition: transform 0.6s cubic-bezier(.25,.46,.45,.94);
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item .g-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,16,0.8) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.4s;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .gallery-item:hover .g-overlay { opacity: 1; }
+    .g-overlay-inner { display: flex; align-items: center; gap: 8px; }
+    .g-icon {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,45,120,0.9);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+    }
+    .g-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.8); }
+
+    /* Big first photo */
+    .gallery-item:first-child { margin-bottom: 12px; }
+
+    @media (max-width: 768px) { .gallery-grid { columns: 2; } .gallery-wrap { padding: 0 16px; } }
+    @media (max-width: 480px) { .gallery-grid { columns: 1; } }
+
+    /* ══════════════════════════════════════════
+       LIGHTBOX
+    ══════════════════════════════════════════ */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 500;
+      background: rgba(5,5,15,0.97); backdrop-filter: blur(20px);
+      align-items: center; justify-content: center;
+    }
+    #lightbox.active { display: flex; }
+    #lightbox img {
+      max-width: 88vw; max-height: 88vh; object-fit: contain;
+      border: 1px solid var(--border); border-radius: 4px;
+      box-shadow: 0 0 80px rgba(255,45,120,0.15);
+    }
+    .lb-close {
+      position: absolute; top: 20px; right: 28px;
+      font-size: 28px; color: var(--gray); cursor: pointer;
+      background: none; border: none; transition: color 0.2s;
+    }
+    .lb-close:hover { color: var(--pink); }
+    .lb-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,45,120,0.15); border: 1px solid rgba(255,45,120,0.3);
+      color: var(--white); font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .lb-nav:hover { background: var(--pink); border-color: var(--pink); }
+    #lightbox-prev { left: 20px; }
+    #lightbox-next { right: 20px; }
+
+    /* ══════════════════════════════════════════
+       INLINE AD BANNER
+    ══════════════════════════════════════════ */
+    .ad-banner-section {
+      padding: 32px 0; display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.02);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .ad-banner-label { font-size: 8px; letter-spacing: 0.4em; text-transform: uppercase; color: #333; }
+
+    /* ══════════════════════════════════════════
+       VIDEOS
+    ══════════════════════════════════════════ */
+    #videos { padding: 100px 0; background: var(--bg2); }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px; padding: 0 32px;
+    }
+    .video-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden; cursor: pointer;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .video-card:hover {
+      border-color: rgba(255,45,120,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(255,45,120,0.12);
+    }
+    .video-thumb {
+      position: relative; aspect-ratio: 16/9;
+      background: #111; overflow: hidden;
+    }
+    .video-thumb video {
+      width: 100%; height: 100%; object-fit: cover; pointer-events: none;
+    }
+    .video-thumb .thumb-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,8,16,0.6) 0%, transparent 60%);
+    }
+    .play-ring {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .play-ring-inner {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: rgba(255,45,120,0.15);
+      border: 2px solid rgba(255,45,120,0.6);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+    }
+    .video-card:hover .play-ring-inner {
+      background: var(--pink); border-color: var(--pink);
+      box-shadow: 0 0 30px rgba(255,45,120,0.5);
+    }
+    .play-ring-inner svg { fill: var(--pink); transition: fill 0.3s; }
+    .video-card:hover .play-ring-inner svg { fill: #fff; }
+
+    /* Lock badge */
+    .lock-badge {
+      position: absolute; top: 10px; right: 10px;
+      background: rgba(8,8,16,0.8); border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 12px;
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pink2);
+      display: flex; align-items: center; gap: 4px;
+    }
+
+    .video-info { padding: 16px; }
+    .video-title-text {
+      font-family: var(--font-h); font-size: 16px; font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .video-meta-row {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .video-meta-txt { font-size: 10px; color: var(--gray); letter-spacing: 0.15em; text-transform: uppercase; }
+    .watch-tag {
+      font-size: 9px; padding: 3px 10px;
+      background: rgba(255,45,120,0.1); border: 1px solid rgba(255,45,120,0.25);
+      color: var(--pink); border-radius: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) { .videos-grid { padding: 0 16px; gap: 14px; } }
+
+    /* ══════════════════════════════════════════
+       VIDEO MODAL
+    ══════════════════════════════════════════ */
+    #video-modal {
+      display: none; position: fixed; inset: 0; z-index: 800;
+      background: rgba(5,5,15,0.98); backdrop-filter: blur(20px);
+      align-items: center; justify-content: center; flex-direction: column;
+    }
+    #video-modal.active { display: flex; }
+    /* video modal uses iframe now - Google Drive */
+    #modal-iframe-wrap { position: relative; }
+    .modal-close {
+      position: absolute; top: 20px; right: 28px;
+      font-size: 28px; color: var(--gray); cursor: pointer; background: none; border: none;
+      transition: color 0.2s;
+    }
+    .modal-close:hover { color: var(--pink); }
+
+    /* ══════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════ */
+    #about { padding: 100px 0; background: var(--bg); }
+    .about-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .about-img-wrap { position: relative; }
+    .about-img-wrap::before {
+      content: ''; position: absolute;
+      inset: -2px; border-radius: 6px; z-index: 0;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      padding: 2px;
+    }
+    .about-img-inner {
+      position: relative; z-index: 1;
+      overflow: hidden; border-radius: 4px;
+    }
+    .about-img-inner img {
+      width: 100%; display: block;
+      aspect-ratio: 3/4; object-fit: cover;
+      transition: transform 0.6s;
+    }
+    .about-img-wrap:hover .about-img-inner img { transform: scale(1.03); }
+    .about-glow {
+      position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%);
+      width: 60%; height: 100px;
+      background: var(--pink); filter: blur(60px); opacity: 0.2; pointer-events: none;
+    }
+    .about-text .tag { color: var(--pink); font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .about-text h2 {
+      font-family: var(--font-h); font-size: clamp(28px, 4vw, 46px);
+      font-weight: 700; line-height: 1.1; margin-bottom: 24px;
+    }
+    .about-text h2 em { font-style: italic; color: var(--pink); }
+    .about-text p { color: var(--gray2); font-size: 13px; line-height: 1.9; margin-bottom: 16px; }
+    .about-stats {
+      display: flex; gap: 32px; margin-top: 36px;
+      padding-top: 32px; border-top: 1px solid var(--border);
+    }
+    .astat-num {
+      font-family: var(--font-h); font-size: 36px; font-style: italic;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .astat-lbl { font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gray); }
+
+    @media (max-width: 768px) {
+      .about-inner { grid-template-columns: 1fr; padding: 0 20px; gap: 40px; }
+      .about-img-wrap::before { display: none; }
+    }
+
+    
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    footer {
+      background: rgba(5,5,12,1);
+      border-top: 1px solid var(--border);
+      padding: 60px 48px 32px;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 40px; flex-wrap: wrap; gap: 32px;
+    }
+    .footer-logo {
+      font-family: var(--font-h); font-size: 22px; font-style: italic; font-weight: 700;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .footer-tagline { font-size: 9px; letter-spacing: 0.3em; color: var(--gray); text-transform: uppercase; margin-top: 6px; }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+    .footer-links a {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gray); text-decoration: none; transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--pink); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 24px;
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-copy { font-size: 10px; color: #333; letter-spacing: 0.1em; }
+
+    @media (max-width: 768px) { footer { padding: 48px 20px 24px; } .footer-top { flex-direction: column; } }
+
+    /* ══════════════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════════════ */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+
+    /* ══════════════════════════════════════════
+       PRELANDER OVERLAY
+    ══════════════════════════════════════════ */
+    #prelander {
+      position: fixed; inset: 0; z-index: 2147483647;
+      background: #080810;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 24px; text-align: center;
+      overflow: hidden;
+    }
+    #prelander .pl-bg {
+      position: absolute; inset: 0;
+      background: url('p15.jpg') center/cover no-repeat;
+      filter: blur(3px) brightness(0.3);
+      transform: scale(1.05);
+    }
+    #prelander .pl-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(8,8,16,0.75) 0%, rgba(155,77,255,0.1) 100%);
+    }
+    #prelander .pl-content {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .pl-age-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,45,120,0.15);
+      border: 1px solid rgba(255,45,120,0.4);
+      padding: 6px 18px; border-radius: 20px;
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: #ff2d78; margin-bottom: 28px;
+      animation: plpulse 2s ease-in-out infinite;
+    }
+    @keyframes plpulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(255,45,120,0.3); }
+      50% { box-shadow: 0 0 0 8px rgba(255,45,120,0); }
+    }
+    .pl-name {
+      font-family: var(--font-h);
+      font-size: clamp(42px, 10vw, 96px);
+      font-weight: 700; line-height: 0.95;
+      color: #f0eefa; margin-bottom: 12px;
+    }
+    .pl-name em {
+      display: block; font-style: italic;
+      background: linear-gradient(135deg, #ff2d78, #9b4dff);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .pl-tagline {
+      font-size: 12px; color: rgba(176,174,200,0.8);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 32px;
+    }
+    .pl-warning {
+      font-size: 11px; color: rgba(122,122,154,0.9);
+      letter-spacing: 0.08em; margin-bottom: 32px;
+      max-width: 360px; line-height: 1.8;
+    }
+    .pl-warning strong { color: rgba(176,174,200,0.9); }
+    .pl-enter {
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 18px 56px;
+      background: linear-gradient(135deg, #ff2d78, #9b4dff);
+      border: none; border-radius: 3px;
+      color: #fff; font-family: var(--font-b);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 40px rgba(255,45,120,0.4);
+      transition: all 0.3s;
+      animation: plglow 2s ease-in-out infinite;
+    }
+    @keyframes plglow {
+      0%,100% { box-shadow: 0 0 40px rgba(255,45,120,0.4); }
+      50% { box-shadow: 0 0 70px rgba(255,45,120,0.7); }
+    }
+    .pl-enter:hover { transform: translateY(-3px) scale(1.02); }
+    .pl-decline {
+      display: block; margin-top: 20px;
+      font-size: 10px; color: rgba(122,122,154,0.4);
+      letter-spacing: 0.15em; text-decoration: none;
+      text-transform: uppercase; cursor: pointer;
+      background: none; border: none;
+      transition: color 0.2s;
+    }
+    .pl-decline:hover { color: rgba(122,122,154,0.8); }
+    .pl-ai-note {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(155,77,255,0.4); white-space: nowrap;
+    }
+
+    /* ══ PULSING BUTTONS ══ */
+    .btn-pulse {
+      animation: btnpulse 1.5s ease-in-out infinite;
+      position: relative;
+    }
+    @keyframes btnpulse {
+      0%,100% { box-shadow: 0 0 20px rgba(255,45,120,0.4), 0 0 0 0 rgba(255,45,120,0.4); }
+      50% { box-shadow: 0 0 40px rgba(255,45,120,0.8), 0 0 0 12px rgba(255,45,120,0); }
+    }
+    .btn-pulse::before {
+      content: '';
+      position: absolute; inset: -3px;
+      border-radius: 4px;
+      background: linear-gradient(135deg, #ff2d78, #9b4dff);
+      z-index: -1;
+      animation: borderPulse 1.5s ease-in-out infinite;
+      opacity: 0;
+    }
+    @keyframes borderPulse {
+      0%,100% { opacity: 0; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.03); }
+    }
+    /* Cursor glow */
+    .cursor-glow {
+      position: fixed; width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,45,120,0.06) 0%, transparent 70%);
+      pointer-events: none; z-index: 0;
+      transform: translate(-50%,-50%);
+      transition: left 0.1s, top 0.1s;
+    }
+
+    /* ══════════════════════════════════════════
+       MOBILE RESPONSIVE — COMPREHENSIVE
+    ══════════════════════════════════════════ */
+
+    /* Prelander mobile */
+    @media (max-width: 600px) {
+      #prelander .pl-name { font-size: 52px; }
+      .pl-enter {
+        padding: 16px 32px; font-size: 12px;
+        width: 100%; max-width: 320px; justify-content: center;
+      }
+      .pl-warning { font-size: 10px; padding: 0 8px; }
+      .pl-tagline { font-size: 10px; }
+      .pl-age-badge { font-size: 10px; padding: 5px 14px; }
+    }
+
+    /* Hero mobile */
+    @media (max-width: 600px) {
+      .hero-content { padding: 100px 16px 60px; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline {
+        width: 100%; max-width: 300px;
+        text-align: center; justify-content: center;
+        display: flex; align-items: center;
+      }
+      #explore-btn { font-size: 12px; padding: 14px 24px; }
+    }
+
+    /* Video modal mobile */
+    @media (max-width: 600px) {
+      #modal-iframe-wrap {
+        width: 98vw !important;
+        aspect-ratio: 16/9;
+      }
+      .modal-close { top: 8px; right: 12px; font-size: 22px; }
+    }
+
+    /* Video ad overlay mobile */
+    @media (max-width: 600px) {
+      #video-ad-overlay .ad-box { min-width: 280px; min-height: 60px; }
+      .skip-btn, .close-btn { padding: 10px 24px; font-size: 10px; }
+    }
+
+    /* VAST preroll mobile */
+    @media (max-width: 600px) {
+      #vast-preroll video { max-height: 60vh; }
+      #vast-skip-btn { padding: 6px 16px; font-size: 10px; }
+    }
+
+    /* Lightbox mobile */
+    @media (max-width: 600px) {
+      #lightbox img { max-width: 96vw; max-height: 80vh; }
+      #lightbox-prev { left: 6px; width: 36px; height: 36px; font-size: 14px; }
+      #lightbox-next { right: 6px; width: 36px; height: 36px; font-size: 14px; }
+      .lb-close { top: 12px; right: 12px; font-size: 22px; }
+    }
+
+    /* Section heads mobile */
+    @media (max-width: 600px) {
+      .section-head { margin-bottom: 32px; padding: 0 16px; }
+      #gallery, #videos, #about { padding: 60px 0; }
+    }
+
+    /* Video cards mobile */
+    @media (max-width: 600px) {
+      .videos-grid { grid-template-columns: 1fr; gap: 16px; padding: 0 12px; }
+      .video-title-text { font-size: 14px; }
+    }
+
+    /* About mobile */
+    @media (max-width: 600px) {
+      .about-stats { flex-wrap: wrap; gap: 20px; }
+      .astat-num { font-size: 28px; }
+    }
+
+    /* Sticky AI badge mobile */
+    @media (max-width: 600px) {
+      .ai-badge-fixed { bottom: 10px; right: 10px; font-size: 8px; padding: 4px 8px; }
+    }
+
+    /* Periodic / video-ad overlay mobile */
+    @media (max-width: 600px) {
+      #periodic-overlay, #video-ad-overlay {
+        padding: 16px;
+        gap: 12px;
+      }
+      #periodic-overlay .ad-box,
+      #video-ad-overlay .ad-box { min-width: 280px; }
+    }
+
+    /* Pulse buttons mobile */
+    @media (max-width: 600px) {
+      .btn-pulse { width: 100%; max-width: 300px; }
+    }
+
+    /* Watch more button mobile */
+    @media (max-width: 600px) {
+      .videos-grid + div button { width: 90%; font-size: 10px; }
+    }
+
+    /* Gallery load more mobile */
+    @media (max-width: 600px) {
+      #gallery-load-more-wrap { padding: 0 16px; }
+      #gallery-load-more { width: 100%; }
+    }
+
+    /* ══════════════════════════════════════════
+       18+ SPECIAL GALLERY
+    ══════════════════════════════════════════ */
+    #gallery18 { padding: 80px 0; background: #0a0a14; }
+    .gallery18-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px; padding: 0 32px;
+    }
+    .gallery18-item {
+      position: relative; overflow: hidden;
+      border-radius: 6px; cursor: pointer;
+      border: 1px solid rgba(255,45,120,0.2);
+      transition: border-color 0.3s, transform 0.3s;
+      aspect-ratio: 3/4;
+    }
+    .gallery18-item:hover {
+      border-color: rgba(255,45,120,0.6);
+      transform: translateY(-4px);
+    }
+    .gallery18-item img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      filter: blur(12px) brightness(0.7);
+      transform: scale(1.1);
+      transition: filter 0.4s, transform 0.4s;
+    }
+    .gallery18-item:hover img {
+      filter: blur(6px) brightness(0.8);
+      transform: scale(1.15);
+    }
+    .gallery18-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px; z-index: 2;
+    }
+    .gallery18-lock {
+      font-size: 28px; line-height: 1;
+    }
+    .gallery18-label {
+      font-size: 10px; letter-spacing: 0.25em;
+      text-transform: uppercase; color: #fff;
+      font-family: var(--font-b);
+      background: rgba(255,45,120,0.7);
+      padding: 4px 12px; border-radius: 10px;
+    }
+    .gallery18-hint {
+      font-size: 9px; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+      .gallery18-grid { grid-template-columns: repeat(2, 1fr); padding: 0 12px; }
+    }
+    @media (max-width: 480px) {
+      .gallery18-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    }
+
+    /* ══ FORCE ADS BELOW PRELANDER ══ */
+    #prelander { z-index: 2147483647 !important; }
+    .eas6a97888e2, .eas6a97888e35, .eas6a97888e37,
+    .eas6a97888e42, .eas6a97888e6, .eas6a97888e17,
+    .eas6a97888e33, .eas6a97888e15 { z-index: 100 !important; }
+
+    /* ══ HIDE BANNERS ON MOBILE ══ */
+    @media (max-width: 768px) {
+      .eas6a97888e2,
+      .eas6a97888e35,
+      .eas6a97888e37,
+      .eas6a97888e6,
+      .eas6a97888e17,
+      .ad-banner-section,
+      #exo-zone-inline,
+      #exo-zone-periodic,
+      #exo-zone-preroll { display: none !important; }
+    }
+
+    /* ══ TIKTOK BUTTON ══ */
+    .tiktok-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px; color: var(--white);
+      font-family: var(--font-b); font-size: 12px;
+      font-weight: 500; letter-spacing: 0.1em;
+      cursor: pointer; text-decoration: none;
+      transition: all 0.3s;
+    }
+    .tiktok-btn:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.3);
+      transform: translateY(-2px);
+    }
+    .tiktok-btn svg { flex-shrink: 0; }
+
+    /* ══ FIX SKIP AD BUTTON ON MOBILE ══ */
+    #video-ad-overlay {
+      z-index: 99998 !important;
+      padding: 20px 16px 40px !important;
+      overflow-y: auto;
+    }
+    #video-ad-overlay .skip-btn {
+      position: relative;
+      z-index: 99999 !important;
+      margin-top: 16px;
+      flex-shrink: 0;
+    }
+    #video-ad-overlay .countdown {
+      z-index: 99999 !important;
+      position: relative;
+    }
+    #exo-zone-preroll {
+      max-height: 60vh;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      #video-ad-overlay {
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 80px !important;
+      }
+      #exo-zone-preroll {
+        max-width: 100%;
+        max-height: 50vh;
+        overflow: hidden;
+      }
+      #video-ad-overlay .skip-btn {
+        margin-top: 20px;
+        width: 80%;
+        max-width: 280px;
+      }
+    }
+  </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('enter-site-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    // Hide prelander
+    var pl = document.getElementById('prelander');
+    if (pl) pl.style.display = 'none';
+    openPopunder();
+    // Show preroll banner
+    setTimeout(function() {
+      if (typeof showBannerPreroll === 'function') showBannerPreroll(null);
+    }, 300);
+  });
+});
+</script>
+</head>
+<body>
+
+<!-- ══════════ EXOCLICK OUTSTREAM VIDEO ══════════ -->
+<script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+<ins class="eas6a97888e37" data-zoneid="5876276"></ins>
+<script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+<!-- ══════════ EXOCLICK MOBILE FULLPAGE INTERSTITIAL ══════════ -->
+<script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+<ins class="eas6a97888e33" data-zoneid="5876278"></ins>
+<script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+<!-- Mobile popunder handled by main popunder script (5876254) -->
+
+<!-- ══════════ EXOCLICK STICKY BANNER ══════════ -->
+<script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+<ins class="eas6a97888e17" data-zoneid="5876270"></ins>
+<script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+<!-- ══════════ EXOCLICK INSTANT MESSAGE ══════════ -->
+<script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+<ins class="eas6a97888e6" data-zoneid="5876266"></ins>
+<script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+<!-- ══════════ EXOCLICK PUSH NOTIFICATIONS ══════════ -->
+<script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+<ins class="eas6a97888e42" data-zoneid="5876262"></ins>
+<script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+<!-- ══════════ PRELANDER OVERLAY ══════════ -->
+<div id="prelander">
+  <div class="pl-bg">
+    <img src="p15.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;filter:blur(3px) brightness(0.3);transform:scale(1.05);"/>
+  </div>
+  <div class="pl-overlay"></div>
+  <div class="pl-content">
+    <div class="pl-age-badge">🔞 18+ Content</div>
+    <h1 class="pl-name">Paola<em>Calefiori</em></h1>
+    <p class="pl-tagline">AI Model &nbsp;·&nbsp; Exclusive Content &nbsp;·&nbsp; 4K Quality</p>
+    <p class="pl-warning">
+      This website contains <strong>adult content</strong> intended for viewers aged 18 and older.
+      By continuing you confirm you are of legal age in your country.
+    </p>
+    <button class="pl-enter btn-pulse" id="enter-site-btn">
+      ▶ &nbsp; Enter Site — 18+ Content
+    </button>
+    <button class="pl-decline" onclick="window.location.href='https://www.google.com'">
+      I am under 18 — Leave
+    </button>
+  </div>
+  <div class="pl-ai-note">✦ All content is AI Generated · No real persons depicted</div>
+</div>
+
+<!-- Cursor glow effect -->
+<div class="cursor-glow" id="cursor-glow"></div>
+
+<!-- ══════════ AI BANNER ══════════ -->
+<div class="ai-banner">
+  <strong>✦ AI Generated Content</strong> &nbsp;·&nbsp; All images and videos on this site are created using artificial intelligence &nbsp;·&nbsp; No real persons are depicted
+</div>
+
+<!-- ══════════ AI BADGE ══════════ -->
+<div class="ai-badge-fixed">✦ AI Content</div>
+
+<!-- ══════════ EXOCLICK DESKTOP FULLPAGE INTERSTITIAL (auto-fires on load) ══════════ -->
+<script async type="application/javascript" src="https://a.pemsrv.com/ad-provider.js"></script>
+<ins class="eas6a97888e35" data-zoneid="5876260"></ins>
+<script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+
+<!-- ══════════ PERIODIC AD ══════════ -->
+<div id="periodic-overlay">
+    <!-- ═══════════════════════════════════════════════════════════
+         ExoClick — PERIODIC AD (каждые 5 минут)
+         ШАГ 1: exoclick.com → Sites & Zones → New Zone → Banner
+         ШАГ 2: Размер: 728x90 Desktop | 300x250 Mobile
+         ШАГ 3: Вставь Zone ID вместо 5876248
+         ═══════════════════════════════════════════════════════════ -->
+    <div id="exo-zone-periodic" style="min-width:280px;min-height:50px;display:flex;align-items:center;justify-content:center;text-align:center;max-width:100%;overflow:hidden;"></div>
+    <script>
+      window._tjLoadPeriodic = function(){
+        var c = document.getElementById('exo-zone-periodic');
+        c.innerHTML = '';
+        var s1 = document.createElement('script');
+        s1.async = true; s1.src = 'https://a.magsrv.com/ad-provider.js';
+        var ins = document.createElement('ins');
+        ins.className = 'eas6a97888e2'; ins.setAttribute('data-zoneid','5876248');
+        var s2 = document.createElement('script');
+        s2.text = '(AdProvider=window.AdProvider||[]).push({"serve":{}});';
+        c.appendChild(s1); c.appendChild(ins); c.appendChild(s2);
+      };
+    </script>
+  <div class="countdown" id="periodic-countdown"></div>
+  <button class="close-btn" id="periodic-close" disabled data-i18n="closeAd">Close Ad</button>
+</div>
+
+<!-- ══════════ VIDEO PRE-ROLL AD ══════════ -->
+<div id="video-ad-overlay">
+  <div class="ad-label" data-i18n="watchAdToPlay">Watch ad to play video</div>
+    <!-- ═══════════════════════════════════════════════════════════
+         ExoClick — VIDEO PRE-ROLL AD (перед каждым видео)
+         ШАГ 1: exoclick.com → Sites & Zones → New Zone → Banner
+         ШАГ 2: Размер: 728x90 Desktop | 300x250 Mobile
+         ШАГ 3: Вставь Zone ID вместо 5876250
+         ═══════════════════════════════════════════════════════════ -->
+    <div id="exo-zone-preroll" style="min-width:280px;min-height:50px;display:flex;align-items:center;justify-content:center;text-align:center;max-width:100%;overflow:hidden;"></div>
+    <script>
+      window._tjLoadVideoAd = function(){
+        var c = document.getElementById('exo-zone-preroll');
+        c.innerHTML = '';
+        var s1 = document.createElement('script');
+        s1.async = true; s1.src = 'https://a.magsrv.com/ad-provider.js';
+        var ins = document.createElement('ins');
+        ins.className = 'eas6a97888e2'; ins.setAttribute('data-zoneid','5876250');
+        var s2 = document.createElement('script');
+        s2.text = '(AdProvider=window.AdProvider||[]).push({"serve":{}});';
+        c.appendChild(s1); c.appendChild(ins); c.appendChild(s2);
+      };
+    </script>
+  <div class="countdown" id="video-countdown"></div>
+  <button class="skip-btn" id="video-ad-skip" disabled data-i18n="skipAd">Skip Ad</button>
+</div>
+
+<!-- ══════════ MOBILE NAV ══════════ -->
+<div class="mobile-nav" id="mobile-nav">
+  <button class="close-nav" id="close-nav">✕</button>
+  <a href="#gallery" onclick="closeMobileNav()" data-i18n="navGallery">Gallery</a>
+  <a href="#videos" onclick="closeMobileNav()" data-i18n="navVideos">Videos</a>
+</div>
+
+<!-- ══════════ HEADER ══════════ -->
+<header id="main-header">
+  <a href="#" class="logo">Paola Calefiori</a>
+  <nav>
+    <a href="#gallery" data-i18n="navGallery">Gallery</a>
+    <a href="#videos" data-i18n="navVideos">Videos</a>
+    <a href="#gallery18" style="color:#ff2d78;">🔞 Hot</a>
+    <a href="https://www.tiktok.com/@paolacalefiori" id="tiktok-nav" target="_blank" style="display:inline-flex;align-items:center;gap:6px;color:#fff;"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>TikTok</a>
+    <select id="lang-select" onchange="setLanguage(this.value)">
+      <option value="en">EN</option>
+      <option value="es">ES</option>
+      <option value="it">IT</option>
+      <option value="fr">FR</option>
+      <option value="de">DE</option>
+      <option value="pt">PT</option>
+      <option value="ru">RU</option>
+      <option value="tr">TR</option>
+    </select>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="openMobileNav()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="p15.jpg" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:block;"/>
+  </div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="hero-content">
+    <h1 class="hero-name">
+      <span class="first">Paola</span>
+      <span class="last">Calefiori</span>
+    </h1>
+    <p class="hero-sub" data-i18n="heroDesc">Beauty without limits. Every frame — unforgettable.</p>
+    <div class="hero-btns">
+      <a class="btn-primary btn-pulse" id="explore-btn" style="cursor:pointer;padding:16px 44px;font-size:13px;">🔞 Explore Gallery — 18+</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num" id="stat-photo-count">17+</div>
+      <div class="stat-lbl" data-i18n="statPhotos">Photos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-lbl" data-i18n="statVideos">Videos</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4K</div>
+      <div class="stat-lbl">Quality</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-lbl" data-i18n="statStyle">Style</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ GALLERY ══════════ -->
+<section id="gallery" style="display:none;">
+  <div class="section-head fade-in">
+    <div class="section-tag" data-i18n="galleryLabel">Portfolio</div>
+    <h2 class="section-title" data-i18n="galleryTitle">The <em>Gallery</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="gallery-wrap">
+    <!-- "Load More" показывает по 9 фото за раз -->
+    <div class="gallery-grid" id="gallery-grid"></div>
+    <div class="gallery-load-more" id="gallery-load-more-wrap" style="text-align:center;margin-top:40px;display:none;">
+      <button class="btn-outline" id="gallery-load-more" onclick="openPopunder();loadMorePhotos()">
+        <span id="load-more-txt">Load More</span>
+      </button>
+    </div>
+    <!-- See Full Gallery button — triggers ad -->
+    <div style="text-align:center;margin-top:24px;">
+      <button onclick="openPopunder()" class="btn-outline" style="padding:12px 36px;background:transparent;border:1px solid rgba(255,45,120,0.4);color:#ff2d78;font-family:var(--font-b);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;">
+        🔥 See Full Exclusive Gallery
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-nav" id="lightbox-prev" onclick="lightboxNav(-1)">&#8592;</button>
+  <img id="lightbox-img" src="" alt=""/>
+  <button class="lb-nav" id="lightbox-next" onclick="lightboxNav(1)">&#8594;</button>
+</div>
+
+<!-- ══════════ INLINE AD BANNER ══════════ -->
+<div class="ad-banner-section">
+  <!-- ═══════════════════════════════════════════════════════════
+       ExoClick — INLINE BANNER (между галереей и видео)
+       ШАГ 1: exoclick.com → Sites & Zones → New Zone → Banner
+       ШАГ 2: Размер: 728x90 Desktop | 300x250 Mobile
+       ШАГ 3: Вставь Zone ID вместо 5876252
+       ═══════════════════════════════════════════════════════════ -->
+  <div id="exo-zone-inline" style="min-width:280px;min-height:50px;display:flex;align-items:center;justify-content:center;text-align:center;max-width:100%;overflow:hidden;">
+    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+    <ins class="eas6a97888e2" data-zoneid="5876252"></ins>
+    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+  </div>
+</div>
+
+<!-- ══════════ VIDEOS ══════════ -->
+<section id="videos">
+  <div class="section-head fade-in">
+    <div class="section-tag" data-i18n="videosLabel">Exclusive</div>
+    <h2 class="section-title" data-i18n="videosTitle"><em>Videos</em></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="videos-grid">
+    <div class="video-card fade-in" onclick="openPopunder();requestVideo('1SMaFjH9Cie4HA9-4JVwesv_DOGXipbYr','Video 01')">
+      <div class="video-thumb">
+        <img src="https://drive.google.com/thumbnail?id=1SMaFjH9Cie4HA9-4JVwesv_DOGXipbYr&sz=w640" alt="Video 01" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1a0a1f,#0d0520)';this.style.display='none'"/>
+        <div class="thumb-gradient"></div>
+        <div class="lock-badge">🔒 <span data-i18n="watchAdNotice">Ad unlock</span></div>
+        <div class="play-ring"><div class="play-ring-inner"><svg width="14" height="16" viewBox="0 0 14 16"><path d="M0 0l14 8-14 8z"/></svg></div></div>
+      </div>
+      <div class="video-info">
+        <div class="video-title-text" data-i18n="videoTitle1">Video 01</div>
+        <div class="video-meta-row">
+          <span class="video-meta-txt">HD · Exclusive</span>
+          <span class="watch-tag" data-i18n="watchAdNotice">Watch Ad</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-in" onclick="openPopunder();requestVideo('1NGBX42zVHBQOry_l0QhHbCOihRS6uIAu','Video 02')">
+      <div class="video-thumb">
+        <img src="https://drive.google.com/thumbnail?id=1NGBX42zVHBQOry_l0QhHbCOihRS6uIAu&sz=w640" alt="Video 02" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1a0a1f,#0d0520)';this.style.display='none'"/>
+        <div class="thumb-gradient"></div>
+        <div class="lock-badge">🔒 <span data-i18n="watchAdNotice">Ad unlock</span></div>
+        <div class="play-ring"><div class="play-ring-inner"><svg width="14" height="16" viewBox="0 0 14 16"><path d="M0 0l14 8-14 8z"/></svg></div></div>
+      </div>
+      <div class="video-info">
+        <div class="video-title-text" data-i18n="videoTitle2">Video 02</div>
+        <div class="video-meta-row">
+          <span class="video-meta-txt">HD · Exclusive</span>
+          <span class="watch-tag" data-i18n="watchAdNotice">Watch Ad</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-in" onclick="openPopunder();requestVideo('1qxSxx7yUn6TYH1HUyD_5zMKlgUtGPADp','Video 03')">
+      <div class="video-thumb">
+        <img src="https://drive.google.com/thumbnail?id=1qxSxx7yUn6TYH1HUyD_5zMKlgUtGPADp&sz=w640" alt="Video 03" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1a0a1f,#0d0520)';this.style.display='none'"/>
+        <div class="thumb-gradient"></div>
+        <div class="lock-badge">🔒 <span data-i18n="watchAdNotice">Ad unlock</span></div>
+        <div class="play-ring"><div class="play-ring-inner"><svg width="14" height="16" viewBox="0 0 14 16"><path d="M0 0l14 8-14 8z"/></svg></div></div>
+      </div>
+      <div class="video-info">
+        <div class="video-title-text" data-i18n="videoTitle3">Video 03</div>
+        <div class="video-meta-row">
+          <span class="video-meta-txt">HD · Exclusive</span>
+          <span class="watch-tag" data-i18n="watchAdNotice">Watch Ad</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-in" onclick="openPopunder();requestVideo('1Pkkf7L841xSOmfCA6adFJMECOHC5rZPg','Video 04')">
+      <div class="video-thumb">
+        <img src="https://drive.google.com/thumbnail?id=1Pkkf7L841xSOmfCA6adFJMECOHC5rZPg&sz=w640" alt="Video 04" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1a0a1f,#0d0520)';this.style.display='none'"/>
+        <div class="thumb-gradient"></div>
+        <div class="lock-badge">🔒 <span data-i18n="watchAdNotice">Ad unlock</span></div>
+        <div class="play-ring"><div class="play-ring-inner"><svg width="14" height="16" viewBox="0 0 14 16"><path d="M0 0l14 8-14 8z"/></svg></div></div>
+      </div>
+      <div class="video-info">
+        <div class="video-title-text" data-i18n="videoTitle4">Video 04</div>
+        <div class="video-meta-row">
+          <span class="video-meta-txt">HD · Exclusive</span>
+          <span class="watch-tag" data-i18n="watchAdNotice">Watch Ad</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-card fade-in" onclick="openPopunder();requestVideo('1bMxQYHobFKi-Bgt8iYD7TATMCRTbPEA-','Video 05')">
+      <div class="video-thumb">
+        <img src="https://drive.google.com/thumbnail?id=1bMxQYHobFKi-Bgt8iYD7TATMCRTbPEA-&sz=w640" alt="Video 05" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#1a0a1f,#0d0520)';this.style.display='none'"/>
+        <div class="thumb-gradient"></div>
+        <div class="lock-badge">🔒 <span data-i18n="watchAdNotice">Ad unlock</span></div>
+        <div class="play-ring"><div class="play-ring-inner"><svg width="14" height="16" viewBox="0 0 14 16"><path d="M0 0l14 8-14 8z"/></svg></div></div>
+      </div>
+      <div class="video-info">
+        <div class="video-title-text" data-i18n="videoTitle5">Video 05</div>
+        <div class="video-meta-row">
+          <span class="video-meta-txt">HD · Exclusive</span>
+          <span class="watch-tag" data-i18n="watchAdNotice">Watch Ad</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════ VAST IN-STREAM PRE-ROLL ══════════ -->
+<div id="vast-preroll" style="display:none;position:fixed;inset:0;z-index:850;background:#000;align-items:center;justify-content:center;flex-direction:column;">
+  <video id="vast-video" style="max-width:100%;max-height:80vh;outline:none;" playsinline></video>
+  <div style="position:absolute;top:16px;right:20px;display:flex;align-items:center;gap:16px;">
+    <span id="vast-skip-counter" style="font-size:12px;color:#aaa;font-family:sans-serif;letter-spacing:0.1em;"></span>
+    <button id="vast-skip-btn" onclick="skipVast()" style="display:none;padding:8px 24px;background:transparent;border:1px solid #ff2d78;color:#ff2d78;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;">Skip Ad ›</button>
+  </div>
+  <div style="position:absolute;bottom:20px;left:20px;font-size:9px;color:#555;letter-spacing:0.2em;text-transform:uppercase;">Advertisement</div>
+</div>
+
+<!-- VIDEO MODAL -->
+<div id="video-modal">
+  <button class="modal-close" onclick="closeVideoModal()">✕</button>
+  <div id="modal-iframe-wrap" style="width:min(900px,92vw);aspect-ratio:16/9;background:#000;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);box-shadow:0 0 60px rgba(255,45,120,0.15);">
+    <iframe id="modal-video-iframe"
+      src=""
+      width="100%" height="100%"
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+      style="display:block;">
+    </iframe>
+  </div>
+</div>
+
+
+
+
+
+<!-- ══════════ 18+ SPECIAL GALLERY ══════════ -->
+<section id="gallery18" class="fade-in">
+  <div class="section-head fade-in">
+    <div class="section-tag">🔞 Exclusive 18+</div>
+    <h2 class="section-title">The <em>Hot</em> Gallery</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="gallery18-grid">
+    <div class="gallery18-item" onclick="open18Photo('e1.jpg', 0)">
+      <img src="e1.jpg" alt="Exclusive 1" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+    <div class="gallery18-item" onclick="open18Photo('e2.jpg', 1)">
+      <img src="e2.jpg" alt="Exclusive 2" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+    <div class="gallery18-item" onclick="open18Photo('e3.jpg', 2)">
+      <img src="e3.jpg" alt="Exclusive 3" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+    <div class="gallery18-item" onclick="open18Photo('e4.jpg', 3)">
+      <img src="e4.jpg" alt="Exclusive 4" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+    <div class="gallery18-item" onclick="open18Photo('e5.jpg', 4)">
+      <img src="e5.jpg" alt="Exclusive 5" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+    <div class="gallery18-item" onclick="open18Photo('e6.jpg', 5)">
+      <img src="e6.jpg" alt="Exclusive 6" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+    <div class="gallery18-item" onclick="open18Photo('e7.jpg', 6)">
+      <img src="e7.jpg" alt="Exclusive 7" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+    <div class="gallery18-item" onclick="open18Photo('e8.jpg', 7)">
+      <img src="e8.jpg" alt="Exclusive 8" loading="lazy"/>
+      <div class="gallery18-overlay">
+        <div class="gallery18-lock">🔥</div>
+        <div class="gallery18-label">18+ Exclusive</div>
+        <div class="gallery18-hint">Click to unlock</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Paola Calefiori</div>
+      <div class="footer-tagline" data-i18n="footerTagline">AI Model · Creator · Icon</div>
+    </div>
+    <div class="footer-links">
+      <a href="#gallery" data-i18n="navGallery">Gallery</a>
+      <a href="#videos" data-i18n="navVideos">Videos</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="2257.html">18 U.S.C. 2257</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Paola Calefiori. All rights reserved.</span>
+    <span class="footer-copy" data-i18n="footerAdult">18+ · AI Generated Content</span>
+  </div>
+</footer>
+
+<!-- ══════════ EXOCLICK POPUNDER ══════════ -->
+<script type="application/javascript">
+(function() {
+    function randStr(e,t){for(var n="",r=t||"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",o=0;o<e;o++)n+=r.charAt(Math.floor(Math.random()*r.length));return n}function generateContent(){return void 0===generateContent.val&&(generateContent.val="document.dispatchEvent("+randStr(4*Math.random()+3)+");"),generateContent.val}try{Object.defineProperty(document.currentScript,"innerHTML",{get:generateContent}),Object.defineProperty(document.currentScript,"textContent",{get:generateContent})}catch(e){};
+    var adConfig = {"ads_host":"a.pemsrv.com","syndication_host":"s.pemsrv.com","idzone":5876254,"popup_fallback":false,"popup_force":false,"chrome_enabled":true,"new_tab":false,"frequency_period":1,"frequency_count":1,"trigger_method":2,"trigger_class":"exo-pop","trigger_delay":0,"capping_enabled":false,"tcf_enabled":true,"only_inline":false};
+    window.document.querySelectorAll||(document.querySelectorAll=document.body.querySelectorAll=Object.querySelectorAll=function(e,o,t,i,n){var r=document,a=r.createStyleSheet();for(n=r.all,o=[],t=(e=e.replace(/\[for/gi,"[htmlFor").split(",")).length;t--;){for(a.addRule(e[t],"k:v"),i=n.length;i--;)n[i].currentStyle.k&&o.push(n[i]);a.removeRule(0)}return o});var popMagic={version:8,cookie_name:"",url:"",config:{},open_count:0,top:null,browser:null,venor_loaded:!1,venor:!1,tcfData:null,remoteLicensedDomains:["exdynsrv.com","exosrv.com","exoclick.com","opoxv.com","exacdn.com","pemsrv.com"],configTpl:{ads_host:"",syndication_host:"",idzone:"",frequency_period:720,frequency_count:1,trigger_method:1,trigger_class:"",popup_force:!1,popup_fallback:!1,chrome_enabled:!0,new_tab:!1,cat:"",tags:"",el:"",sub:"",sub2:"",sub3:"",only_inline:!1,trigger_delay:0,capping_enabled:!0,tcf_enabled:!1,cookieconsent:!0,should_fire:function(){return!0},on_redirect:null},isAdsDomainLicensed:function(){for(var e=this.config.ads_host,o=this.remoteLicensedDomains.concat([".local","localhost","127.0.0.1"]),t=0;t<o.length;t++){var i=o[t];if("string"==typeof i)if("."===i.charAt(0)){var n=i,r=i.substring(1);if(e.slice(-n.length)===n||e===r)return!0}else{var a=e===i,c="."+i,p=e.slice(-c.length)===c;if(a||p)return!0}}return!1},init:function(e){if(void 0!==e.idzone&&e.idzone){void 0===e.customTargeting&&(e.customTargeting=[]),window.customTargeting=e.customTargeting||null;var o=Object.keys(e.customTargeting).filter(function(e){return e.search("ex_")>=0});for(var t in o.length&&o.forEach(function(e){return this.configTpl[e]=null}.bind(this)),this.configTpl)Object.prototype.hasOwnProperty.call(this.configTpl,t)&&(void 0!==e[t]?this.config[t]=e[t]:this.config[t]=this.configTpl[t]);if(void 0!==this.config.idzone&&""!==this.config.idzone){!0!==this.config.only_inline&&this.isAdsDomainLicensed()&&this.loadHosted();var i=this;this.checkTCFConsent(function(){"complete"===document.readyState?i.preparePopWait():i.addEventToElement(window,"load",i.preparePop)})}}},getCountFromCookie:function(){if(!this.config.cookieconsent)return 0;var e=popMagic.getCookie(popMagic.cookie_name),o=void 0===e?0:parseInt(e);return isNaN(o)&&(o=0),o},getLastOpenedTimeFromCookie:function(){var e=popMagic.getCookie(popMagic.cookie_name),o=null;if(void 0!==e){var t=e.split(";")[1];o=t>0?parseInt(t):0}return isNaN(o)&&(o=null),o},shouldShow:function(e){if(e=e||!1,!popMagic.config.capping_enabled){var o=!0,t=popMagic.config.should_fire;try{e||"function"!=typeof t||(o=Boolean(t()))}catch(e){console.error("Error executing should fire callback function:",e)}return o&&0===popMagic.open_count}if(popMagic.open_count>=popMagic.config.frequency_count)return!1;var i=popMagic.getCountFromCookie(),n=popMagic.getLastOpenedTimeFromCookie(),r=Math.floor(Date.now()/1e3),a=n+popMagic.config.trigger_delay;return!(n&&a>r)&&(popMagic.open_count=i,!(i>=popMagic.config.frequency_count))},venorShouldShow:function(){return popMagic.venor_loaded&&"0"===popMagic.venor},setAsOpened:function(e){var o=e?e.target||e.srcElement:null,t={id:"",tagName:"",classes:"",text:"",href:"",elm:""};void 0!==o&&null!=o&&(t={id:void 0!==o.id&&null!=o.id?o.id:"",tagName:void 0!==o.tagName&&null!=o.tagName?o.tagName:"",classes:void 0!==o.classList&&null!=o.classList?o.classList:"",text:void 0!==o.outerText&&null!=o.outerText?o.outerText:"",href:void 0!==o.href&&null!=o.href?o.href:"",elm:o});var i=new CustomEvent("creativeDisplayed-"+popMagic.config.idzone,{detail:t});if(document.dispatchEvent(i),popMagic.config.capping_enabled){var n=1;n=0!==popMagic.open_count?popMagic.open_count+1:popMagic.getCountFromCookie()+1;var r=Math.floor(Date.now()/1e3);popMagic.config.cookieconsent&&popMagic.setCookie(popMagic.cookie_name,n+";"+r,popMagic.config.frequency_period)}else++popMagic.open_count},loadHosted:function(){var e=document.createElement("script");for(var o in e.type="application/javascript",e.async=!0,e.src="//"+this.config.ads_host+"/popunder1000.js",e.id="popmagicldr",this.config)Object.prototype.hasOwnProperty.call(this.config,o)&&"ads_host"!==o&&"syndication_host"!==o&&e.setAttribute("data-exo-"+o,this.config[o]);var t=document.getElementsByTagName("body").item(0);t.firstChild?t.insertBefore(e,t.firstChild):t.appendChild(e)},preparePopWait:function(){setTimeout(popMagic.preparePop,400)},preparePop:function(){if("object"!=typeof exoJsPop101||!Object.prototype.hasOwnProperty.call(exoJsPop101,"add")){if(popMagic.top=self,popMagic.top!==self)try{top.document.location.toString()&&(popMagic.top=top)}catch(e){}if(popMagic.cookie_name="zone-cap-"+popMagic.config.idzone,popMagic.config.capping_enabled||(document.cookie=popMagic.cookie_name+"=;expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/"),popMagic.shouldShow(!0)){var e=new XMLHttpRequest;e.onreadystatechange=function(){e.readyState==XMLHttpRequest.DONE&&(popMagic.venor_loaded=!0,200==e.status?popMagic.venor=e.responseText:popMagic.venor="0")};var o="https:"!==document.location.protocol&&"http:"!==document.location.protocol?"https:":document.location.protocol;e.open("GET",o+"//"+popMagic.config.syndication_host+"/venor.php",!0);try{e.send()}catch(e){popMagic.venor_loaded=!0}}if(popMagic.buildUrl(),popMagic.browser=popMagic.browserDetector.getBrowserInfo(),popMagic.config.chrome_enabled||!popMagic.browser.isChrome){var t=popMagic.getPopMethod(popMagic.browser);popMagic.addEvent("click",t)}}},getPopMethod:function(e){return popMagic.config.popup_force||popMagic.config.popup_fallback&&e.isChrome&&e.version>=68&&!e.isMobile?popMagic.methods.popup:e.isMobile?popMagic.methods.default:e.isChrome?popMagic.methods.chromeTab:popMagic.methods.default},checkTCFConsent:function(e){if(this.config.tcf_enabled&&"function"==typeof window.__tcfapi){var o=this;window.__tcfapi("addEventListener",2,function(t,i){i&&(o.tcfData=t,"tcloaded"!==t.eventStatus&&"useractioncomplete"!==t.eventStatus||(window.__tcfapi("removeEventListener",2,function(){},t.listenerId),e()))})}else e()},buildUrl:function(){var e,o="https:"!==document.location.protocol&&"http:"!==document.location.protocol?"https:":document.location.protocol,t=top===self?document.URL:document.referrer,i={type:"inline",name:"popMagic",ver:this.version},n="";customTargeting&&Object.keys(customTargeting).length&&("object"==typeof customTargeting?Object.keys(customTargeting):customTargeting).forEach(function(o){"object"==typeof customTargeting?e=customTargeting[o]:Array.isArray(customTargeting)&&(e=scriptEl.getAttribute(o));var t=o.replace("data-exo-","");n+="&"+t+"="+e});var r=this.tcfData&&this.tcfData.gdprApplies&&!0===this.tcfData.gdprApplies?1:0,a=popMagic.getCookie("__suvt");this.url=o+"//"+this.config.syndication_host+"/v1/link.php?cat="+this.config.cat+"&idzone="+this.config.idzone+"&type=8&p="+encodeURIComponent(t)+"&sub="+this.config.sub+(""!==this.config.sub2?"&sub2="+this.config.sub2:"")+(""!==this.config.sub3?"&sub3="+this.config.sub3:"")+"&block=1&el="+this.config.el+"&tags="+this.config.tags+"&scr_info="+function(e){var o=e.type+"|"+e.name+"|"+e.ver;return encodeURIComponent(btoa(o))}(i)+n+"&gdpr="+r+"&cb="+Math.floor(1e9*Math.random())+(a?"&suvt="+a:""),this.tcfData&&this.tcfData.tcString?this.url+="&gdpr_consent="+encodeURIComponent(this.tcfData.tcString):this.url+="&cookieconsent="+this.config.cookieconsent},addEventToElement:function(e,o,t){e.addEventListener?e.addEventListener(o,t,!1):e.attachEvent?(e["e"+o+t]=t,e[o+t]=function(){e["e"+o+t](window.event)},e.attachEvent("on"+o,e[o+t])):e["on"+o]=e["e"+o+t]},getTriggerClasses:function(){var e,o=[];-1===popMagic.config.trigger_class.indexOf(",")?e=popMagic.config.trigger_class.split(" "):e=popMagic.config.trigger_class.replace(/\s/g,"").split(",");for(var t=0;t<e.length;t++)""!==e[t]&&o.push("."+e[t]);return o},addEvent:function(e,o){var t;if("3"!=popMagic.config.trigger_method)if("2"!=popMagic.config.trigger_method||""==popMagic.config.trigger_class)if("4"!=popMagic.config.trigger_method||""==popMagic.config.trigger_class)if("5"!=popMagic.config.trigger_method||""==popMagic.config.trigger_class)popMagic.addEventToElement(document,e,o);else{var i="a"+popMagic.getTriggerClasses().map(function(e){return":not("+e+")"}).join("");t=document.querySelectorAll(i);for(var n=0;n<t.length;n++)popMagic.addEventToElement(t[n],e,o)}else{var r=popMagic.getTriggerClasses();popMagic.addEventToElement(document,e,function(e){r.some(function(o){return null!==e.target.closest(o)})||o.call(e.target,e)})}else{var a=popMagic.getTriggerClasses();for(t=document.querySelectorAll(a.join(", ")),n=0;n<t.length;n++)popMagic.addEventToElement(t[n],e,o)}else for(t=document.querySelectorAll("a"),n=0;n<t.length;n++)popMagic.addEventToElement(t[n],e,o)},setCookie:function(e,o,t){if(!this.config.cookieconsent)return!1;t=parseInt(t,10);var i=new Date;i.setMinutes(i.getMinutes()+parseInt(t));var n=encodeURIComponent(o)+"; expires="+i.toUTCString()+"; path=/";document.cookie=e+"="+n},getCookie:function(e){if(!this.config.cookieconsent)return!1;var o,t,i,n=document.cookie.split(";");for(o=0;o<n.length;o++)if(t=n[o].substr(0,n[o].indexOf("=")),i=n[o].substr(n[o].indexOf("=")+1),(t=t.replace(/^\s+|\s+$/g,""))===e)return decodeURIComponent(i)},randStr:function(e,o){for(var t="",i=o||"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",n=0;n<e;n++)t+=i.charAt(Math.floor(Math.random()*i.length));return t},isValidUserEvent:function(e){return!(!("isTrusted"in e)||!e.isTrusted||"ie"===popMagic.browser.name||"safari"===popMagic.browser.name)||0!=e.screenX&&0!=e.screenY},isValidHref:function(e){if(void 0===e||""==e)return!1;return!/\s?javascript\s?:/i.test(e)},findLinkToOpen:function(e){var o=e,t=!1;try{for(var i=0;i<20&&!o.getAttribute("href")&&o!==document&&"html"!==o.nodeName.toLowerCase();)o=o.parentNode,i++;var n=o.getAttribute("target");n&&-1!==n.indexOf("_blank")||(t=o.getAttribute("href"))}catch(e){}return popMagic.isValidHref(t)||(t=!1),t||window.location.href},getPuId:function(){return"ok_"+Math.floor(89999999*Math.random()+1e7)},executeOnRedirect:function(){try{popMagic.config.capping_enabled||"function"!=typeof popMagic.config.on_redirect||popMagic.config.on_redirect()}catch(e){console.error("Error executing on redirect callback:",e)}},browserDetector:{browserDefinitions:[["firefox",/Firefox\/([0-9.]+)(?:\s|$)/],["opera",/Opera\/([0-9.]+)(?:\s|$)/],["opera",/OPR\/([0-9.]+)(:?\s|$)$/],["edge",/Edg(?:e|)\/([0-9._]+)/],["ie",/Trident\/7\.0.*rv:([0-9.]+)\).*Gecko$/],["ie",/MSIE\s([0-9.]+);.*Trident\/[4-7].0/],["ie",/MSIE\s(7\.0)/],["safari",/Version\/([0-9._]+).*Safari/],["chrome",/(?!Chrom.*Edg(?:e|))Chrom(?:e|ium)\/([0-9.]+)(:?\s|$)/],["chrome",/(?!Chrom.*OPR)Chrom(?:e|ium)\/([0-9.]+)(:?\s|$)/],["bb10",/BB10;\sTouch.*Version\/([0-9.]+)/],["android",/Android\s([0-9.]+)/],["ios",/Version\/([0-9._]+).*Mobile.*Safari.*/],["yandexbrowser",/YaBrowser\/([0-9._]+)/],["crios",/CriOS\/([0-9.]+)(:?\s|$)/]],isChromeOrChromium:function(){var e=window.navigator,o=(e.userAgent||"").toLowerCase(),t=e.vendor||"";if(-1!==o.indexOf("crios"))return!0;if(e.userAgentData&&Array.isArray(e.userAgentData.brands)&&e.userAgentData.brands.length>0){var i=e.userAgentData.brands,n=i.some(function(e){return"Google Chrome"===e.brand}),r=i.some(function(e){return"Chromium"===e.brand})&&2===i.length;return n||r}var a=!!window.chrome,c=-1!==o.indexOf("edg"),p=!!window.opr||-1!==o.indexOf("opr"),s=!(!e.brave||!e.brave.isBrave),g=-1!==o.indexOf("vivaldi"),l=-1!==o.indexOf("yabrowser"),d=-1!==o.indexOf("samsungbrowser"),u=-1!==o.indexOf("ucbrowser");return a&&"Google Inc."===t&&!c&&!p&&!s&&!g&&!l&&!d&&!u},getBrowserInfo:function(){var e=window.navigator.userAgent,o={name:"other",version:"1.0",versionNumber:1,isChrome:this.isChromeOrChromium(),isMobile:!!e.match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WebOS|Windows Phone/i)};for(var t in this.browserDefinitions){var i=this.browserDefinitions[t];if(i[1].test(e)){var n=i[1].exec(e),r=n&&n[1].split(/[._]/).slice(0,3),a=Array.prototype.slice.call(r,1).join("")||"0";r&&r.length<3&&Array.prototype.push.apply(r,1===r.length?[0,0]:[0]),o.name=i[0],o.version=r.join("."),o.versionNumber=parseFloat(r[0]+"."+a);break}}return o}},methods:{default:function(e){if(!popMagic.shouldShow()||!popMagic.venorShouldShow()||!popMagic.isValidUserEvent(e))return!0;var o=e.target||e.srcElement,t=popMagic.findLinkToOpen(o);return window.open(t,"_blank"),popMagic.setAsOpened(e),popMagic.executeOnRedirect(),popMagic.top.document.location=popMagic.url,void 0!==e.preventDefault&&(e.preventDefault(),e.stopPropagation()),!0},chromeTab:function(e){if(!popMagic.shouldShow()||!popMagic.venorShouldShow()||!popMagic.isValidUserEvent(e))return!0;if(void 0===e.preventDefault)return!0;e.preventDefault(),e.stopPropagation();var o=top.window.document.createElement("a"),t=e.target||e.srcElement;o.href=popMagic.findLinkToOpen(t),document.getElementsByTagName("body")[0].appendChild(o);var i=new MouseEvent("click",{bubbles:!0,cancelable:!0,view:window,screenX:0,screenY:0,clientX:0,clientY:0,ctrlKey:!0,altKey:!1,shiftKey:!1,metaKey:!0,button:0});i.preventDefault=void 0,o.dispatchEvent(i),o.parentNode.removeChild(o),popMagic.executeOnRedirect(),window.open(popMagic.url,"_blank"),popMagic.setAsOpened(e)},popup:function(e){if(!popMagic.shouldShow()||!popMagic.venorShouldShow()||!popMagic.isValidUserEvent(e))return!0;var o="";if(popMagic.config.popup_fallback&&!popMagic.config.popup_force){var t=Math.max(Math.round(.8*window.innerHeight),300);o="menubar=1,resizable=1,width="+Math.max(Math.round(.7*window.innerWidth),300)+",height="+t+",top="+(window.screenY+100)+",left="+(window.screenX+100)}var i=document.location.href,n=window.open(i,popMagic.getPuId(),o);popMagic.setAsOpened(e),setTimeout(function(){n.location.href=popMagic.url,popMagic.executeOnRedirect()},200),void 0!==e.preventDefault&&(e.preventDefault(),e.stopPropagation())}}}; popMagic.init(adConfig);
+})();
+</script>
+
+<!-- ══════════ JAVASCRIPT ══════════ -->
+<script>
+// ─── TRANSLATIONS ────────────────────────────────────────────────────────────
+const translations = {
+  en: {
+    adLabel:"Advertisement", closeAd:"Close Ad", watchAdToPlay:"Watch ad to play video",
+    skipAd:"Skip Ad", navGallery:"Gallery", navVideos:"Videos", navAbout:"About",
+    navSubscribe:"Subscribe", heroSubtitle:"AI Model · Creator · Icon",
+    heroDesc:"Beauty without limits. Every frame — unforgettable.",
+    heroBtn:"Explore Gallery", galleryLabel:"Portfolio", galleryTitle:"The Gallery",
+    viewPhoto:"View", videosLabel:"Exclusive", videosTitle:"Videos",
+    videoTitle1:"Video 01", videoTitle2:"Video 02", videoTitle3:"Video 03",
+    videoTitle4:"Video 04", videoTitle5:"Video 05", watchAdNotice:"Watch ad to unlock",
+    aboutLabel:"About", aboutTitle:"The face behind the legend",
+    aboutP1:"Paola Calefiori is an AI-generated model created for exclusive digital content. Every image and video is crafted with precision and artistry.",
+    aboutP2:"Every photograph is a story. Every video — a moment captured in eternity. Welcome to her world.",
+    statPhotos:"Photos", statVideos:"Videos", statStyle:"Style",
+    subTitle:"Unlock Everything", subDesc:"Get exclusive access to all photos and videos. Support Paola directly.",
+    planFree:"Free", planPremium:"Premium", planMonth:"/ month",
+    planFree1:"Public gallery", planFree2:"Ad-supported videos",
+    planPrem1:"Full gallery access", planPrem2:"All videos, no ads", planPrem3:"New content first",
+    planFreeCta:"Browse Free", planPremiumCta:"Subscribe Now",
+    footerTagline:"AI Model · Creator · Icon", footerAdult:"18+ · AI Generated Content",
+    countdownSec:"Close in {n}s"
+  },
+  es: {
+    adLabel:"Publicidad", closeAd:"Cerrar anuncio", watchAdToPlay:"Ver anuncio para reproducir",
+    skipAd:"Saltar anuncio", navGallery:"Galería", navVideos:"Videos", navAbout:"Sobre mí",
+    navSubscribe:"Suscribirse", heroSubtitle:"IA Modelo · Creadora · Ícono",
+    heroDesc:"Belleza sin límites. Cada mirada — inolvidable.",
+    heroBtn:"Explorar", galleryLabel:"Portafolio", galleryTitle:"La Galería",
+    viewPhoto:"Ver", videosLabel:"Exclusivo", videosTitle:"Videos",
+    videoTitle1:"Video 01", videoTitle2:"Video 02", videoTitle3:"Video 03",
+    videoTitle4:"Video 04", videoTitle5:"Video 05", watchAdNotice:"Ver anuncio para desbloquear",
+    aboutLabel:"Sobre", aboutTitle:"El rostro detrás de la leyenda",
+    aboutP1:"Paola Calefiori es una modelo generada por IA creada para contenido digital exclusivo.",
+    aboutP2:"Cada fotografía es una historia. Cada video — un momento capturado en la eternidad.",
+    statPhotos:"Fotos", statVideos:"Videos", statStyle:"Estilo",
+    subTitle:"Desbloquea Todo", subDesc:"Acceso exclusivo a todas las fotos y videos.",
+    planFree:"Gratis", planPremium:"Premium", planMonth:"/ mes",
+    planFree1:"Galería pública", planFree2:"Videos con anuncios",
+    planPrem1:"Galería completa", planPrem2:"Todos los videos, sin anuncios", planPrem3:"Contenido nuevo primero",
+    planFreeCta:"Ver gratis", planPremiumCta:"Suscribirse ahora",
+    footerTagline:"IA Modelo · Creadora · Ícono", footerAdult:"18+ · Contenido IA",
+    countdownSec:"Cerrar en {n}s"
+  },
+  it: {
+    adLabel:"Pubblicità", closeAd:"Chiudi annuncio", watchAdToPlay:"Guarda l'annuncio per riprodurre",
+    skipAd:"Salta annuncio", navGallery:"Galleria", navVideos:"Video", navAbout:"Su di me",
+    navSubscribe:"Iscriviti", heroSubtitle:"Modella IA · Creatrice · Icona",
+    heroDesc:"Bellezza senza limiti. Ogni sguardo — indimenticabile.",
+    heroBtn:"Esplora", galleryLabel:"Portfolio", galleryTitle:"La Galleria",
+    viewPhoto:"Vedi", videosLabel:"Esclusivo", videosTitle:"Video",
+    videoTitle1:"Video 01", videoTitle2:"Video 02", videoTitle3:"Video 03",
+    videoTitle4:"Video 04", videoTitle5:"Video 05", watchAdNotice:"Guarda l'annuncio per sbloccare",
+    aboutLabel:"Su di me", aboutTitle:"Il volto dietro la leggenda",
+    aboutP1:"Paola Calefiori è una modella generata da IA per contenuti digitali esclusivi.",
+    aboutP2:"Ogni fotografia è una storia. Ogni video — un momento catturato nell'eternità.",
+    statPhotos:"Foto", statVideos:"Video", statStyle:"Stile",
+    subTitle:"Sblocca Tutto", subDesc:"Accesso esclusivo a tutte le foto e i video.",
+    planFree:"Gratuito", planPremium:"Premium", planMonth:"/ mese",
+    planFree1:"Galleria pubblica", planFree2:"Video con pubblicità",
+    planPrem1:"Galleria completa", planPrem2:"Tutti i video, senza pubblicità", planPrem3:"Nuovo contenuto in anteprima",
+    planFreeCta:"Sfoglia gratis", planPremiumCta:"Iscriviti ora",
+    footerTagline:"Modella IA · Creatrice · Icona", footerAdult:"18+ · Contenuto IA",
+    countdownSec:"Chiudi tra {n}s"
+  },
+  fr: {
+    adLabel:"Publicité", closeAd:"Fermer l'annonce", watchAdToPlay:"Regarder l'annonce pour jouer",
+    skipAd:"Passer l'annonce", navGallery:"Galerie", navVideos:"Vidéos", navAbout:"À propos",
+    navSubscribe:"S'abonner", heroSubtitle:"Modèle IA · Créatrice · Icône",
+    heroDesc:"Beauté sans limites. Chaque regard — inoubliable.",
+    heroBtn:"Explorer", galleryLabel:"Portfolio", galleryTitle:"La Galerie",
+    viewPhoto:"Voir", videosLabel:"Exclusif", videosTitle:"Vidéos",
+    videoTitle1:"Vidéo 01", videoTitle2:"Vidéo 02", videoTitle3:"Vidéo 03",
+    videoTitle4:"Vidéo 04", videoTitle5:"Vidéo 05", watchAdNotice:"Regarder une annonce pour débloquer",
+    aboutLabel:"À propos", aboutTitle:"Le visage derrière la légende",
+    aboutP1:"Paola Calefiori est une modèle générée par IA pour du contenu numérique exclusif.",
+    aboutP2:"Chaque photo est une histoire. Chaque vidéo — un moment capturé pour l'éternité.",
+    statPhotos:"Photos", statVideos:"Vidéos", statStyle:"Style",
+    subTitle:"Tout Débloquer", subDesc:"Accès exclusif à toutes les photos et vidéos.",
+    planFree:"Gratuit", planPremium:"Premium", planMonth:"/ mois",
+    planFree1:"Galerie publique", planFree2:"Vidéos avec publicité",
+    planPrem1:"Galerie complète", planPrem2:"Toutes les vidéos, sans pub", planPrem3:"Contenu en avant-première",
+    planFreeCta:"Parcourir gratuitement", planPremiumCta:"S'abonner maintenant",
+    footerTagline:"Modèle IA · Créatrice · Icône", footerAdult:"18+ · Contenu IA",
+    countdownSec:"Fermer dans {n}s"
+  },
+  de: {
+    adLabel:"Werbung", closeAd:"Anzeige schließen", watchAdToPlay:"Anzeige ansehen zum Abspielen",
+    skipAd:"Überspringen", navGallery:"Galerie", navVideos:"Videos", navAbout:"Über mich",
+    navSubscribe:"Abonnieren", heroSubtitle:"KI-Model · Kreatorin · Ikone",
+    heroDesc:"Schönheit ohne Grenzen. Jeder Blick — unvergesslich.",
+    heroBtn:"Erkunden", galleryLabel:"Portfolio", galleryTitle:"Die Galerie",
+    viewPhoto:"Ansehen", videosLabel:"Exklusiv", videosTitle:"Videos",
+    videoTitle1:"Video 01", videoTitle2:"Video 02", videoTitle3:"Video 03",
+    videoTitle4:"Video 04", videoTitle5:"Video 05", watchAdNotice:"Anzeige ansehen zum Entsperren",
+    aboutLabel:"Über", aboutTitle:"Das Gesicht hinter der Legende",
+    aboutP1:"Paola Calefiori ist ein KI-generiertes Model für exklusive digitale Inhalte.",
+    aboutP2:"Jedes Foto ist eine Geschichte. Jedes Video — ein Moment für die Ewigkeit.",
+    statPhotos:"Fotos", statVideos:"Videos", statStyle:"Stil",
+    subTitle:"Alles Freischalten", subDesc:"Exklusiver Zugang zu allen Fotos und Videos.",
+    planFree:"Kostenlos", planPremium:"Premium", planMonth:"/ Monat",
+    planFree1:"Öffentliche Galerie", planFree2:"Videos mit Werbung",
+    planPrem1:"Vollständige Galerie", planPrem2:"Alle Videos, werbefrei", planPrem3:"Neue Inhalte zuerst",
+    planFreeCta:"Kostenlos ansehen", planPremiumCta:"Jetzt abonnieren",
+    footerTagline:"KI-Model · Kreatorin · Ikone", footerAdult:"18+ · KI-Inhalte",
+    countdownSec:"Schließen in {n}s"
+  },
+  pt: {
+    adLabel:"Publicidade", closeAd:"Fechar anúncio", watchAdToPlay:"Assistir ao anúncio para reproduzir",
+    skipAd:"Pular anúncio", navGallery:"Galeria", navVideos:"Vídeos", navAbout:"Sobre",
+    navSubscribe:"Assinar", heroSubtitle:"Modelo IA · Criadora · Ícone",
+    heroDesc:"Beleza sem limites. Cada olhar — inesquecível.",
+    heroBtn:"Explorar", galleryLabel:"Portfólio", galleryTitle:"A Galeria",
+    viewPhoto:"Ver", videosLabel:"Exclusivo", videosTitle:"Vídeos",
+    videoTitle1:"Vídeo 01", videoTitle2:"Vídeo 02", videoTitle3:"Vídeo 03",
+    videoTitle4:"Vídeo 04", videoTitle5:"Vídeo 05", watchAdNotice:"Assistir anúncio para desbloquear",
+    aboutLabel:"Sobre", aboutTitle:"O rosto por trás da lenda",
+    aboutP1:"Paola Calefiori é uma modelo gerada por IA para conteúdo digital exclusivo.",
+    aboutP2:"Cada fotografia é uma história. Cada vídeo — um momento capturado na eternidade.",
+    statPhotos:"Fotos", statVideos:"Vídeos", statStyle:"Estilo",
+    subTitle:"Desbloquear Tudo", subDesc:"Acesso exclusivo a todas as fotos e vídeos.",
+    planFree:"Gratuito", planPremium:"Premium", planMonth:"/ mês",
+    planFree1:"Galeria pública", planFree2:"Vídeos com anúncios",
+    planPrem1:"Galeria completa", planPrem2:"Todos os vídeos, sem anúncios", planPrem3:"Novo conteúdo em primeiro",
+    planFreeCta:"Navegar grátis", planPremiumCta:"Assinar agora",
+    footerTagline:"Modelo IA · Criadora · Ícone", footerAdult:"18+ · Conteúdo IA",
+    countdownSec:"Fechar em {n}s"
+  },
+  ru: {
+    adLabel:"Реклама", closeAd:"Закрыть", watchAdToPlay:"Посмотрите рекламу для воспроизведения",
+    skipAd:"Пропустить", navGallery:"Галерея", navVideos:"Видео", navAbout:"О себе",
+    navSubscribe:"Подписаться", heroSubtitle:"ИИ Модель · Создатель · Икона",
+    heroDesc:"Красота без ограничений. Каждый взгляд — незабываем.",
+    heroBtn:"Смотреть галерею", galleryLabel:"Портфолио", galleryTitle:"Галерея",
+    viewPhoto:"Смотреть", videosLabel:"Эксклюзив", videosTitle:"Видео",
+    videoTitle1:"Видео 01", videoTitle2:"Видео 02", videoTitle3:"Видео 03",
+    videoTitle4:"Видео 04", videoTitle5:"Видео 05", watchAdNotice:"Реклама для доступа",
+    aboutLabel:"О себе", aboutTitle:"Лицо за легендой",
+    aboutP1:"Паола Калефиори — ИИ-модель, созданная для эксклюзивного цифрового контента.",
+    aboutP2:"Каждая фотография — история. Каждое видео — момент, пойманный в вечность.",
+    statPhotos:"Фото", statVideos:"Видео", statStyle:"Стиль",
+    subTitle:"Открыть Всё", subDesc:"Эксклюзивный доступ ко всем фото и видео.",
+    planFree:"Бесплатно", planPremium:"Премиум", planMonth:"/ месяц",
+    planFree1:"Открытая галерея", planFree2:"Видео с рекламой",
+    planPrem1:"Полная галерея", planPrem2:"Все видео без рекламы", planPrem3:"Новый контент первым",
+    planFreeCta:"Смотреть бесплатно", planPremiumCta:"Подписаться сейчас",
+    footerTagline:"ИИ Модель · Создатель · Икона", footerAdult:"18+ · ИИ Контент",
+    countdownSec:"Закрыть через {n}с"
+  },
+  tr: {
+    adLabel:"Reklam", closeAd:"Kapat", watchAdToPlay:"Video için reklam izle",
+    skipAd:"Geç", navGallery:"Galeri", navVideos:"Videolar", navAbout:"Hakkında",
+    navSubscribe:"Abone Ol", heroSubtitle:"AI Model · İçerik Üreticisi · İkon",
+    heroDesc:"Sınırsız güzellik. Her bakış — unutulmaz.",
+    heroBtn:"Galeriyi Keşfet", galleryLabel:"Portfolyo", galleryTitle:"Galeri",
+    viewPhoto:"Görüntüle", videosLabel:"Özel", videosTitle:"Videolar",
+    videoTitle1:"Video 01", videoTitle2:"Video 02", videoTitle3:"Video 03",
+    videoTitle4:"Video 04", videoTitle5:"Video 05", watchAdNotice:"Kilit açmak için reklam izle",
+    aboutLabel:"Hakkında", aboutTitle:"Efsanenin arkasındaki yüz",
+    aboutP1:"Paola Calefiori, özel dijital içerik için oluşturulmuş bir yapay zeka modelidir.",
+    aboutP2:"Her fotoğraf bir hikayedir. Her video — sonsuzluğa yakalanan bir an.",
+    statPhotos:"Fotoğraflar", statVideos:"Videolar", statStyle:"Stil",
+    subTitle:"Her Şeyin Kilidini Aç", subDesc:"Tüm fotoğraf ve videolara özel erişim.",
+    planFree:"Ücretsiz", planPremium:"Premium", planMonth:"/ ay",
+    planFree1:"Genel galeri", planFree2:"Reklamlı videolar",
+    planPrem1:"Tam galeri erişimi", planPrem2:"Tüm videolar, reklamsız", planPrem3:"Yeni içerik önce burada",
+    planFreeCta:"Ücretsiz Gez", planPremiumCta:"Şimdi Abone Ol",
+    footerTagline:"AI Model · İçerik Üreticisi · İkon", footerAdult:"18+ · AI İçerik",
+    countdownSec:"{n}s'de kapat"
+  }
+};
+
+// ─── LANGUAGE ────────────────────────────────────────────────────────────────
+let currentLang = 'en';
+function detectLanguage() {
+  const nav = navigator.language || navigator.userLanguage || 'en';
+  const code = nav.split('-')[0].toLowerCase();
+  return Object.keys(translations).includes(code) ? code : 'en';
+}
+function setLanguage(lang) {
+  currentLang = lang;
+  document.getElementById('lang-select').value = lang;
+  const t = translations[lang] || translations['en'];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key]) el.textContent = t[key];
+  });
+}
+function t(key, vars = {}) {
+  const tmpl = (translations[currentLang] || translations['en'])[key] || key;
+  return tmpl.replace(/{(\w+)}/g, (_, k) => vars[k] ?? _);
+}
+
+// ─── COUNTDOWN ───────────────────────────────────────────────────────────────
+function runCountdown(el, seconds, onDone) {
+  let n = seconds;
+  el.textContent = t('countdownSec', { n });
+  const iv = setInterval(() => {
+    n--;
+    el.textContent = t('countdownSec', { n });
+    if (n <= 0) { clearInterval(iv); onDone(); }
+  }, 1000);
+}
+
+// ─── SPLASH AD ─ handled natively by ExoClick Interstitial scripts ──────────
+
+// ─── PERIODIC AD (every 5 min) ───────────────────────────────────────────────
+function initPeriodicAd() {
+  const INTERVAL_MS = 5 * 60 * 1000;
+  setInterval(() => {
+    const overlay = document.getElementById('periodic-overlay');
+    const btn = document.getElementById('periodic-close');
+    const cd = document.getElementById('periodic-countdown');
+    overlay.style.display = 'flex';
+    btn.disabled = true;
+    runCountdown(cd, 5, () => { btn.disabled = false; });
+    btn.onclick = () => { overlay.style.display = 'none'; };
+    if (window._tjLoadPeriodic) window._tjLoadPeriodic();
+  }, INTERVAL_MS);
+}
+
+// ─── VIDEO PRE-ROLL ──────────────────────────────────────────────────────────
+let pendingVideoSrc = '';
+function requestVideo(src, title) {
+  pendingVideoSrc = src;
+  openPopunder();
+  showBannerPreroll(src);
+}
+
+function showBannerPreroll(src) {
+  const overlay = document.getElementById('video-ad-overlay');
+  const skipBtn = document.getElementById('video-ad-skip');
+  const cd = document.getElementById('video-countdown');
+  const adZone = document.getElementById('exo-zone-preroll');
+
+  // Load banner zone 5876250 fresh each time
+  adZone.innerHTML = '';
+  var s1 = document.createElement('script');
+  s1.async = true; s1.src = 'https://a.pemsrv.com/ad-provider.js';
+  var ins = document.createElement('ins');
+  ins.className = 'eas6a97888e2'; ins.setAttribute('data-zoneid','5876250');
+  var s2 = document.createElement('script');
+  s2.text = '(AdProvider=window.AdProvider||[]).push({"serve":{}});';
+  adZone.appendChild(s1);
+  adZone.appendChild(ins);
+  adZone.appendChild(s2);
+
+  overlay.style.display = 'flex';
+  skipBtn.disabled = true;
+  runCountdown(cd, 5, () => { skipBtn.disabled = false; });
+  skipBtn.onclick = () => {
+    overlay.style.display = 'none';
+    adZone.innerHTML = '';
+    if (src) openVideoModal(src);
+  };
+}
+// Google Drive embed URL format:
+// https://drive.google.com/file/d/FILE_ID/preview
+// Замени REPLACE_GDRIVE_ID_VPx на реальный ID файла с Google Drive
+
+function openVideoModal(gdrive_id) {
+  const modal = document.getElementById('video-modal');
+  const iframe = document.getElementById('modal-video-iframe');
+  // Google Drive preview embed — работает без скачивания
+  iframe.src = 'https://drive.google.com/file/d/' + gdrive_id + '/preview?autoplay=1';
+  modal.classList.add('active');
+}
+function closeVideoModal() {
+  const modal = document.getElementById('video-modal');
+  const iframe = document.getElementById('modal-video-iframe');
+  modal.classList.remove('active');
+  iframe.src = ''; // останавливаем видео
+}
+
+// ─── LIGHTBOX ────────────────────────────────────────────────────────────────
+// ─── PHOTOS — просто добавляй новые файлы в этот список ─────────────────────
+// Чтобы добавить новое фото: добавь 'p11.jpg', 'p12.jpg' и т.д. в массив ниже
+const photos = [
+  'p1.jpg','p2.jpg','p3.jpg','p4.jpg','p5.jpg',
+  'p6.jpg','p17.jpg','p8.jpg','p9.jpg','p10.jpg',
+  'p11.jpg','p12.jpg','p13.jpg','p14.jpg',
+  'p15.jpg','p16.jpg'
+  // ДОБАВЛЯЙ НОВЫЕ ФОТО СЮДА:
+  // 'p18.jpg','p19.jpg','p20.jpg',
+];
+
+const PHOTOS_PER_PAGE = 9; // сколько фото показывать сразу
+let photosShown = 0;
+
+function buildGalleryItem(idx) {
+  const div = document.createElement('div');
+  div.className = 'gallery-item';
+  div.onclick = () => openLightbox(idx);
+  div.innerHTML = `
+    <img src="${photos[idx]}" alt="Paola ${idx+1}" loading="${idx < 3 ? 'eager' : 'lazy'}" decoding="async" style="width:100%;display:block;"/>
+    <div class="g-overlay">
+      <div class="g-overlay-inner">
+        <div class="g-icon">🔍</div>
+        <span class="g-label">${(translations[currentLang]||translations['en'])['viewPhoto']||'View'}</span>
+      </div>
+    </div>`;
+  return div;
+}
+
+function loadMorePhotos() {
+  const grid = document.getElementById('gallery-grid');
+  const end = Math.min(photosShown + PHOTOS_PER_PAGE, photos.length);
+  for (let i = photosShown; i < end; i++) {
+    grid.appendChild(buildGalleryItem(i));
+  }
+  photosShown = end;
+  const wrap = document.getElementById('gallery-load-more-wrap');
+  if (photosShown >= photos.length) {
+    wrap.style.display = 'none';
+  } else {
+    wrap.style.display = 'block';
+    const remaining = photos.length - photosShown;
+    document.getElementById('load-more-txt').textContent =
+      `Load More (${remaining} left)`;
+  }
+}
+
+function initGallery() {
+  photosShown = 0;
+  document.getElementById('gallery-grid').innerHTML = '';
+  loadMorePhotos();
+}
+let currentPhoto = 0;
+function openLightbox(idx) {
+  currentPhoto = idx;
+  document.getElementById('lightbox-img').src = photos[idx];
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+function lightboxNav(dir) {
+  currentPhoto = (currentPhoto + dir + photos.length) % photos.length;
+  document.getElementById('lightbox-img').src = photos[currentPhoto];
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+
+// ─── 18+ GALLERY ────────────────────────────────────────────────────────────
+const photos18 = ['e1.jpg','e2.jpg','e3.jpg','e4.jpg','e5.jpg','e6.jpg','e7.jpg','e8.jpg'];
+function open18Photo(src, idx) {
+  // Trigger popunder
+  openPopunder();
+  // Unblur clicked item
+  var items = document.querySelectorAll('.gallery18-item');
+  if (items[idx]) {
+    var img = items[idx].querySelector('img');
+    var overlay = items[idx].querySelector('.gallery18-overlay');
+    if (img) img.style.filter = 'blur(0) brightness(1)';
+    if (img) img.style.transform = 'scale(1)';
+    if (overlay) overlay.style.opacity = '0';
+  }
+  // Open in lightbox after short delay
+  setTimeout(function() { openLightbox18(idx); }, 300);
+}
+let current18 = 0;
+function openLightbox18(idx) {
+  current18 = idx;
+  document.getElementById('lightbox-img').src = photos18[idx];
+  document.getElementById('lightbox').classList.add('active');
+}
+
+
+// ─── BACK BUTTON REDIRECT ────────────────────────────────────────────────────
+(function() {
+  // Push fake state so we can intercept back button
+  history.pushState(null, '', location.href);
+  window.addEventListener('popstate', function() {
+    // Push again to prevent actual navigation
+    history.pushState(null, '', location.href);
+    // Open popunder
+    openPopunder();
+    // Show preroll banner
+    if (typeof showBannerPreroll === 'function') showBannerPreroll(null);
+  });
+})();
+
+// ─── HEADER SCROLL ───────────────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// ─── MOBILE NAV ──────────────────────────────────────────────────────────────
+function openMobileNav() { document.getElementById('mobile-nav').classList.add('open'); }
+function closeMobileNav() { document.getElementById('mobile-nav').classList.remove('open'); }
+document.getElementById('close-nav').addEventListener('click', closeMobileNav);
+
+// ─── CURSOR GLOW ─────────────────────────────────────────────────────────────
+const cursorGlow = document.getElementById('cursor-glow');
+document.addEventListener('mousemove', e => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top  = e.clientY + 'px';
+});
+
+// ─── FADE IN ─────────────────────────────────────────────────────────────────
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─── WATCH MORE BUTTON ───────────────────────────────────────────────────────
+function triggerWatchMore() {
+  // triggers popunder via class (handled by ExoClick script)
+  // also shows banner preroll
+  showBannerPreroll(null);
+}
+
+// ─── PRELANDER ───────────────────────────────────────────────────────────────
+function enterSite() {
+  const pl = document.getElementById('prelander');
+  pl.style.transition = 'opacity 0.5s ease';
+  pl.style.opacity = '0';
+  setTimeout(() => { pl.style.display = 'none'; }, 500);
+  // Show banner preroll after entering
+  showBannerPreroll(null);
+}
+
+// ─── INIT ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+
+  // Universal popunder function - works on desktop and mobile
+  window.openPopunder = function() {
+    var url = 'https://s.pemsrv.com/v1/link.php?idzone=5876254&type=8&cb=' + Math.floor(Math.random()*1e9);
+    try {
+      var w = window.open(url, '_blank');
+      if (!w || w.closed || typeof w.closed === 'undefined') { throw new Error('blocked'); }
+    } catch(e) {
+      // Mobile fallback
+      var a = document.createElement('a');
+      a.href = url; a.target = '_blank'; a.rel = 'noopener';
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function() { document.body.removeChild(a); }, 500);
+    }
+  };
+
+  // Add touchstart support for mobile popunder on video cards
+  document.querySelectorAll('.video-card').forEach(function(card) {
+    card.addEventListener('touchstart', function() {}, {passive: true});
+  });
+
+  // TikTok nav link
+  var tiktokNav = document.getElementById('tiktok-nav');
+  if (tiktokNav) {
+    tiktokNav.addEventListener('click', function(e) {
+      e.preventDefault();
+      openPopunder();
+      setTimeout(function() {
+        window.open('https://www.tiktok.com/@paolacalefiori', '_blank');
+      }, 300);
+    });
+  }
+
+  // TikTok button - popunder + open TikTok
+  var tiktokBtn = document.getElementById('tiktok-btn');
+  if (tiktokBtn) {
+    tiktokBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openPopunder();
+      setTimeout(function() {
+        window.open('https://www.tiktok.com/@paolacalefiori', '_blank');
+      }, 300);
+    });
+  }
+  // Explore Gallery button
+  var exploreBtn = document.getElementById('explore-btn');
+  if (exploreBtn) {
+    exploreBtn.addEventListener('click', function() {
+      // Show gallery
+      document.getElementById('gallery').style.display = 'block';
+      // Scroll to gallery
+      setTimeout(function() {
+        document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
+      }, 100);
+      openPopunder();
+    });
+  }
+
+  setLanguage(detectLanguage());
+  initGallery();
+  // ExoClick Interstitial zones (5876260 desktop, 5876278 mobile) fire automatically
+  initPeriodicAd();
+  // Show video pre-roll banner on first page load
+  showBannerPreroll(null);
+});
+</script>
+</body>
+</html>
